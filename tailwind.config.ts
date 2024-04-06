@@ -1,20 +1,45 @@
-import type { Config } from "tailwindcss";
+import type { Config } from 'tailwindcss'
 
 const config: Config = {
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  darkMode: 'media', // or 'media' or 'class'
   theme: {
+    container: {
+      center: true,
+    },
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+    },
+    colors: {
+      light: {
+        'purple': '#6324C6',
+        'grey': '#A7B0BE',
+        'background': '#f5f5f5',
+        font: {
+          'white': '#FFFFFF',
+          'gray-dark2': '#4C5667',
+          'black': '#000000'
+        }
       },
+      dark: {
+        'purple': '#6324C6',
+        'grey': '#A7B0BE',
+        'background': '#323232',
+        font: {
+          'white': '#FFFFFF',
+          'gray-dark2': '#4C5667',
+          'black': '#000000',
+          'purple': '#725fd5',
+        }
+      },
+      background: {
+        'purple': '#6324C6',
+      }
     },
   },
   plugins: [],
-};
-export default config;
+}
+export default config
