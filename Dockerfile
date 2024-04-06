@@ -8,9 +8,9 @@ COPY public ./public
 
 RUN npm run build
 
-FROM node:18-alpine as runner
-WORKDIR /my-space
-COPY --from=builder /my-space .
+FROM nginx:alpine
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=builder /my-space /usr/share/nginx/html
 
-EXPOSE 443
-CMD ["npm", "start"]
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
