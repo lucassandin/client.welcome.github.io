@@ -12,8 +12,8 @@ RUN npm run build
 FROM node:18-alpine as runner
 WORKDIR /my-space
 COPY --from=builder /my-space .
-EXPOSE 3000
-ENTRYPOINT ["npm", "start"]
+EXPOSE 8080
+CMD ["npx", "next", "start"]
 
 # nginx base image
 # FROM nginx:stable-alpine3.17-slim
