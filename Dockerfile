@@ -1,30 +1,34 @@
-# imagem
-FROM node:21.7.1-alpine as build
+FROM node:18-alpine as builder
+WORKDIR /my-space
 
-RUN mkdir -p /app
-# working directory
-WORKDIR /app
+COPY package.json package-lock.json ./
+RUN npm ci
+# Copia o código-fonte da aplicação
+COPY src ./src
+COPY public ./public
 
-# copy
-COPY . ./
+RUN npm run build
 
-RUN npm config set strict-ssl false
-
-# run npm install
-RUN npm install &&\
-  npm run build:prod
+FROM node:18-alpine as runner
+WORKDIR /my-space
+COPY --from=builder /my-space .
+EXPOSE 3000
+ENTRYPOINT ["npm", "start"]
 
 # nginx base image
-FROM nginx:stable-alpine3.17-slim
+# FROM nginx:stable-alpine3.17-slim
 
 # copy static contents of project to nginx html
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-COPY --from=build /app/dist/ /usr/share/nginx/html
+# COPY nginx.conf /etc/nginx/conf.d/default.conf
+# COPY --from=build /app/dist/ /usr/share/nginx/html
 
 # COPY tls.crt /etc/ssl/tls.crt
 # COPY tls.key /etc/ssl/tls.key
 
 # When the container starts, replace the env.js with values from environment variables
-CMD ["/bin/sh",  "-c",  "envsubst < /usr/share/nginx/html/assets/env.template.js > /usr/share/nginx/html/assets/env.js && exec nginx -g 'daemon off;'"]
+# CMD ["/bin/sh",  "-c",  "envsubst < /usr/share/nginx/html/assets/env.template.js > /usr/share/nginx/html/assets/env.js && exec nginx -g 'daemon off;'"]
+
+# Execute o aplicativo 
+CMD ["npm", "start"]
 
 EXPOSE 443
