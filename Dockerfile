@@ -1,19 +1,18 @@
-FROM node:18-alpine as build
+FROM node:18-alpine as builder
+WORKDIR /my-space
 
-WORKDIR /app
-
-COPY package*.json ./
-
-RUN npm install
-
+COPY package.json package-lock.json ./
+RUN npm ci
 COPY . .
-
 RUN npm run build
 
-FROM nginx:alpine
-
-COPY --from=build /app/.next /usr/share/nginx/html
-
-EXPOSE 80
-
-CMD ["nginx", "-g", "daemon off;"]
+FROM node:18-alpine as runner
+WORKDIR /my-space
+COPY --from=builder /my-space/package.json .
+COPY --from=builder /my-space/package-lock.json .
+COPY --from=builder /my-space/next.config.mjs ./
+COPY --from=builder /my-space/public ./public
+COPY --from=builder /my-space/.next/standalone ./
+COPY --from=builder /my-space/.next/static ./.next/static
+EXPOSE 3000
+ENTRYPOINT ["npm", "start"]
