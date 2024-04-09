@@ -9,7 +9,10 @@ export default function RootLayout({
 
   return (
     <html lang="pt-br">
-      <body className={`flex min-h-screen flex-col items-center flex-start gap-24 p-24 ${inter.className}`}>{children}</body>
+      <body 
+        className={`flex min-h-screen ${inter.className}`}>
+        {children}
+      </body>
     </html>
   );
 }

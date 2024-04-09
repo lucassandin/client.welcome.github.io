@@ -1,6 +1,4 @@
 'use client'
-import { ButtonRoot } from "./components/button";
-import SkeletonLoading from "./components/skeletonPosts";
 import { useFetchMessage } from "./hook/useFetchMessage";
 
 export default function Home() {
@@ -9,23 +7,16 @@ export default function Home() {
   if(error) return <div>Erro ao carregar os posts</div>
 
   return (
-    <main>
-      <div className="">
+    <main className="container flex items-center justify-center">
+      <div className="w-full text-center">
         {!data && (
-          <SkeletonLoading />
+          <p>Carregando...</p>
         )}
         <p data-cy-message="message-cy" 
-          className="no-underline hover:underline text-2xl antialiased">
+          className="text-3xl antialiased">
           { data && data?.message }
         </p>
       </div>
-
-      <ButtonRoot.buttons>
-        <ButtonRoot.button 
-          onClick={() => window.location.reload()} text="Obrigado" 
-          data-cy-ver-mais="ver-mais-cy"
-        />
-      </ButtonRoot.buttons>
     </main>
   );
 }
