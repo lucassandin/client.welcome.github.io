@@ -14,7 +14,10 @@ export default function Home() {
         {!data && (
           <SkeletonLoading />
         )}
-        <p data-cy-message="message-cy">{ data && data?.message }</p>
+        <p data-cy-message="message-cy" 
+          className="no-underline hover:underline text-2xl antialiased">
+          { data && data?.message }
+        </p>
       </div>
 
       <ButtonRoot.buttons>
