@@ -4,13 +4,15 @@ WORKDIR /my-space
 COPY package.json package-lock.json ./
 RUN npm ci
 
-ENV NODE_ENV=production
-
 COPY . .
 RUN npm run build
 
 FROM node:18-alpine as runner
 WORKDIR /my-space
+
+RUN apk update
+RUN apk add curl 
+
 COPY --from=builder /my-space/package.json .
 COPY --from=builder /my-space/package-lock.json .
 COPY --from=builder /my-space/next.config.mjs ./

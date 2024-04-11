@@ -5,8 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "build:production": "env-cmd -f .env.production react-scripts build",
-    "start": "node server.js ",
+    "start": "node server.js",
     "lint": "next lint",
     "cypress:open": "cypress open"
   },
