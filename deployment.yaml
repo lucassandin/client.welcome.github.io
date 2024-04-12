@@ -5,15 +5,6 @@ metadata:
   namespace: default
 data:
   HOSTNAME: "0.0.0.0"
-
----
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: clientproduction
-  namespace: default
-data:
-  HOSTNAME: "0.0.0.0"
   NODE_ENV: production
 
 ---
@@ -43,39 +34,11 @@ spec:
                 configMapKeyRef:
                   name: welcome-client
                   key: HOSTNAME
----
-apiVersion: v1
-kind: Deployment
-metadata:
-  name: clientproduction
-spec:
-  replicas: 1
-  selector:
-    matchlabels:
-      app: clientproduction
-  template:
-    metadata:
-      labels:
-        app: clientproduction
-    spec:
-      containers:
-        - name: clientproduction
-          image: lucassandin/welcome-client:latest
-          imagePullPolicy: Always
-          ports:
-            - containerPort: 3005
-          env:
-            - name: HOSTNAME
-              valueFrom:
-                configMapKeyRef:
-                  name: clientproduction
-                  key: HOSTNAME
             - name: NODE_ENV
               valueFrom:
                 configMapKeyRef:
-                  name: clientproduction
+                  name: welcome-client
                   key: NODE_ENV
-
 ---
 # apiVersion: v1
 # kind: Service
@@ -103,21 +66,7 @@ spec:
   selector:
     app: welcomeclient
   ports:
-    - port: 3000
+    - port: 3001
       targetPort: 3000
-      nodePort: 30000
-  type: NodePort
-
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: welcomeclientnodeportproduction
-spec:
-  selector:
-    app: clientproduction
-  ports:
-    - port: 3005
-      targetPort: 3005
-      nodePort: 30005
+      nodePort: 30001
   type: NodePort
