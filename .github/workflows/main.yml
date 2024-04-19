@@ -43,6 +43,5 @@ jobs:
         uses: Azure/k8s-deploy@v4.9
         with:
           images: lucassandin/welcome-client:${{github.run_number}}
-          manifests: |
-            k8s/deployment.yaml
+          manifests: ./k8s/deployment.yaml
             
