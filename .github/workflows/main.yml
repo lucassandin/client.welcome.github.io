@@ -24,6 +24,7 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: |
+            lucassandin/welcome-client:${{github.run_number}}
             lucassandin/welcome-client:latest
           
           
