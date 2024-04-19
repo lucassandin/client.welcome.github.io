@@ -33,9 +33,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4.1.2
       
-      - name: Kubernetes set context
+      - name: Kubernetes Set Context
         uses: Azure/k8s-set-context@v3.0
         with:
           method: kubeconfig
           kubeconfig: ${{secrets.K8S_CONFIG}}
-          
+
+      - name: Deploy to Kubernetes cluster
+        uses: Azure/k8s-deploy@v4.9
+        with:
+          images: lucassandin/welcome-client:${{github.run_number}}
+          manifests: |
+            k8s/deployment.yaml
+            
