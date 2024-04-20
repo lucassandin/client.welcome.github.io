@@ -39,6 +39,28 @@ jobs:
           method: kubeconfig
           kubeconfig: ${{secrets.K8S_CONFIG}}
 
+      - name: Get GKE Credentials
+        uses: google-github-actions/get-gke-credentials@v2.1.0
+        with:
+          cluster_name: cluster-backstage
+          location: us-central1-a
+            
+
+      #- name: Google Kubernetes Engine deployment
+        #uses: piotr-krusinski/action-google-kubernetes-engine-deployment@v1.0
+        #with:
+          #google_project_id: welcome-api-419616 #${{secrets.GCLOUD_PROJECT_ID}}
+          #google_kubernetes_cluster_name: cluster-backstage #${{secrets.GCLOUD_CLUSTER_NAME}}
+          #google_kubernetes_cluster_zone: us-central1-a #${{secrets.GCLOUD_CLUSTER_ZONE}}
+          #service_account_key: ${{secrets.GCLOUD_SERVICE_ACCOUNT_KEY}}
+          #application_name: ${{secrets.GCLOUD_APPLICATION_NAME}}
+          #container_name: ${{secrets.GCLOUD_CONTAINER_NAME}}
+          #image_repo_url: lucassandin/welcome-client:${{github.run_number}}
+          #image_name: lucassandin/welcome-client:${{github.run_number}}
+          #image_tag: lucassandin/welcome-client:${{github.run_number}}
+          #namespace: ${{secrets.GCLOUD_CLUSTER_NAMESPACE}}
+          
+
       #- name: Deploy to Kubernetes cluster
       #  uses: Azure/k8s-deploy@v4.9
       #  with:
