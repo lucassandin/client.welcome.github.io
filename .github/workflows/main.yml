@@ -62,7 +62,8 @@ jobs:
 
       - uses: simenandre/setup-gke-gcloud-auth-plugin@v1
 
-      - uses: google-github-actions/get-gke-credentials@v1
+      - name: Google github actions/get credentials
+        uses: google-github-actions/get-gke-credentials@v1
         with:
           cluster_name: ${{secrets.GOOGLE_CLUSTER_NAME}}
           location: ${{secrets.GOOGLE_CLUSTER_ZONE}}
