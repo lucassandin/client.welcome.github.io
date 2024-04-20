@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Welcome React App
 
-## Getting Started
+Bem-vindo ao Welcome React App! Este é um projeto simples desenvolvido com ReactJS utilizando Next.js. A aplicação exibe mensagens de boas-vindas aleatórias em cada carregamento da tela. Ela é executada na porta 3000 e pode ser executada localmente usando o script "dev" do package.json. Em produção, utilize o script "start".
 
-First, run the development server:
+## Como Executar Localmente
+
+Para executar localmente, siga os passos abaixo:
+
+1. Certifique-se de ter o Node.js instalado em sua máquina.
+2. Clone o repositório:
+
+```bash
+git clone https://github.com/seu-usuario/welcome-react-app.git
+```
+
+3. Acesse o diretório do projeto:
+
+```bash
+cd welcome-react-app
+```
+
+4. Instale as dependências:
+
+```bash
+npm install
+```
+
+ou
+
+```bash
+yarn
+```
+
+5. Execute o projeto em modo de desenvolvimento:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+ou
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+yarn dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+6. Abra o navegador e acesse [http://localhost:3000](http://localhost:3000) para ver a aplicação em execução.
 
-## Learn More
+## Como Usar
 
-To learn more about Next.js, take a look at the following resources:
+A aplicação exibe uma mensagem de boas-vindas aleatória a cada vez que é carregada. Basta acessar [http://localhost:3000](http://localhost:3000) no navegador para visualizar as mensagens.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Tecnologias Utilizadas
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- Framework: ReactJS com Next.js
+- Linguagem de Programação: JavaScript (ES6+)
 
-## Deploy on Vercel
+## Contribuição
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Contribuições são bem-vindas! Sinta-se à vontade para abrir uma issue ou enviar um pull request.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Licença
+
+Este projeto está licenciado sob a MIT License.
+
+Se tiver alguma dúvida ou sugestão, sinta-se à vontade para entrar em contato! 😊
