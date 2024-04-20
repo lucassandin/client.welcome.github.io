@@ -76,3 +76,4 @@ jobs:
         with:
           images: lucassandin/welcome-client:${{github.run_number}}
           manifests: ./k8s/deployment.yaml
+          namespace: ${{secrets.GOOGLE_PROJECT_NAMESPACE}}
