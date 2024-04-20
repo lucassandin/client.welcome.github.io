@@ -44,6 +44,7 @@ jobs:
         with:
           cluster_name: cluster-backstage
           location: us-central1-a
+          project_id: welcome-api-419616
             
 
       #- name: Google Kubernetes Engine deployment
