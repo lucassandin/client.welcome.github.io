@@ -27,18 +27,48 @@ jobs:
 #            lucassandin/welcome-client:${{github.run_number}}
 #            lucassandin/welcome-client:latest
 
-  CD:
+#  CD:
+#    runs-on: ubuntu-latest
+#    needs: [CI]
+#  
+#    steps:
+#      - uses: actions/checkout@v4.1.2
+#      
+#      - name: Kubernetes Set Context
+#        uses: Azure/k8s-set-context@v3.0
+#        with:
+#          method: kubeconfig
+#          kubeconfig: ${{secrets.K8S_CONFIG}}
+# 
+#      - name: Deploy to Kubernetes cluster
+#        uses: Azure/k8s-deploy@v4.9
+#        with:
+#          images: lucassandin/welcome-client:${{github.run_number}}
+#          manifests: ./k8s/deployment.yaml
+          
+  CDD:
     runs-on: ubuntu-latest
     needs: [CI]
-  
+    
     steps:
-      - uses: actions/checkout@v4.1.2
-      
-      - name: Kubernetes Set Context
-        uses: Azure/k8s-set-context@v3.0
+      - name: Checkout
+        uses: actions/checkout@v4.1.2
+
+      - name: Authenticate to GCP
+        uses: google-github-actions/auth@v1
         with:
-          method: kubeconfig
-          kubeconfig: ${{secrets.K8S_CONFIG}}
+          credentials_json: ${{ secrets.GKE_SA_KEY }}
+          project_id: ${{ secrets.GOOGLE_PROJECT_ID }}
+
+      - uses: simenandre/setup-gke-gcloud-auth-plugin@v1
+
+      - uses: google-github-actions/get-gke-credentials@v1
+        with:
+          cluster_name: ${{secrets.GOOGLE_CLUSTER_NAME}}
+          location: ${{secrets.GOOGLE_CLUSTER_ZONE}}
+
+      # At this point you should be able to communicate with your cluster
+      #- run: kubectl get pods
 
       - name: Deploy to Kubernetes cluster
         uses: Azure/k8s-deploy@v4.9
