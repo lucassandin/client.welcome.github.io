@@ -46,7 +46,7 @@ jobs:
 #          images: lucassandin/welcome-client:${{github.run_number}}
 #          manifests: ./k8s/deployment.yaml
           
-  CDD:
+  CD:
     runs-on: ubuntu-latest
     needs: [CI]
     
@@ -67,9 +67,6 @@ jobs:
         with:
           cluster_name: ${{secrets.GOOGLE_CLUSTER_NAME}}
           location: ${{secrets.GOOGLE_CLUSTER_ZONE}}
-
-      # At this point you should be able to communicate with your cluster
-      #- run: kubectl get pods
 
       - name: Deploy to Kubernetes cluster
         uses: Azure/k8s-deploy@v4.9
