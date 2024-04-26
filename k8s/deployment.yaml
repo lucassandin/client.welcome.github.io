@@ -12,6 +12,7 @@ metadata:
 data:
   HOSTNAME: "0.0.0.0"
   NODE_ENV: production
+  NEXT_PUBLIC_API: http://api.34.68.243.59.nip.io/api/v1
 
 ---
 apiVersion: apps/v1
