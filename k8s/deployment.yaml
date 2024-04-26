@@ -47,6 +47,11 @@ spec:
                 configMapKeyRef:
                   name: welcome-client-configmap
                   key: NODE_ENV
+            - name: NEXT_PUBLIC_API
+              valueFrom:
+                configMapKeyRef:
+                  name: welcome-client-configmap
+                  key: NEXT_PUBLIC_API
 
 ---
 apiVersion: v1
