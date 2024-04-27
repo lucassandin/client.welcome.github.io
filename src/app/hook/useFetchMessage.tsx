@@ -1,5 +1,6 @@
 import useSWR from "swr";
 import { Welcome } from "../interfaces/interfaces";
+import { unstable_noStore as noStore } from 'next/cache';
 
 export interface FetchProps {
   data: Welcome | undefined;
@@ -7,7 +8,9 @@ export interface FetchProps {
 }
 
 export function useFetchMessage(): FetchProps {
+  noStore(); 
   try {
+    debugger
     const apiUrl = process.env.API_KEY;
     const url = `${apiUrl}/welcome/random`;
   
