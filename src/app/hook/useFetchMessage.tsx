@@ -10,8 +10,7 @@ export interface FetchProps {
 export function useFetchMessage(): FetchProps {
   noStore(); 
   try {
-    debugger
-    const apiUrl = process.env.API_KEY;
+    const apiUrl = process.env.NEXT_PUBLIC_URL_API;
     const url = `${apiUrl}/welcome/random`;
   
     const { data, error } = useSWR(url, async (url) => {
