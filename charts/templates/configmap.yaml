@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Values.application.name }}-configmap
+  namespace: {{ .Values.application.namespace }}
+data:
+  HOSTNAME: {{ .Values.application.configMap.data.HOSTNAME }}
+  NODE_ENV: {{ .Values.application.configMap.data.NODE_ENV }}
+  NEXT_PUBLIC_API: {{ .Values.application.configMap.data.NEXT_PUBLIC_API }}
+ 
