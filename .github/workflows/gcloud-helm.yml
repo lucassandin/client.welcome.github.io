@@ -62,4 +62,4 @@ jobs:
         run: |
           helm repo add welcome-client https://lucassandin.github.io/welcome-client.github.io/charts
           helm repo update 
-          helm upgrade welcome-client welcome-client/welcome-client
+          helm upgrade --install welcome-client welcome-client/welcome-client
