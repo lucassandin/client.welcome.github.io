@@ -1,0 +1,65 @@
+name: CI-CD
+
+on: 
+  push:
+    tags: 
+      - 'helm*'
+
+jobs:
+  CI:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.2
+      
+      - name: Docker login
+        uses: docker/login-action@v3.1.0
+        with:
+          username: ${{secrets.DOCKERHUB_USER}}
+          password: ${{secrets.DOCKERHUB_PWD}}
+      
+      - name: Docker build and push
+        uses: docker/build-push-action@v5.3.0
+        with: 
+          context: ./
+          file: ./Dockerfile
+          push: true
+          tags: |
+            lucassandin/welcome-client:${{github.run_number}}
+            lucassandin/welcome-client:latest
+          
+  CD:
+    runs-on: ubuntu-latest
+    needs: [CI]
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.2
+
+      - name: Authenticate to GCP
+        uses: google-github-actions/auth@v1
+        with:
+          credentials_json: ${{ secrets.GCLOUD_GKE_SA_KEY }}
+          project_id: ${{ secrets.GCLOUD_PROJECT_ID }}
+
+      - name: Setup GKE GCloud auth plugin
+        uses: simenandre/setup-gke-gcloud-auth-plugin@v1
+
+      - name: Google github actions/get credentials
+        uses: google-github-actions/get-gke-credentials@v1
+        with:
+          cluster_name: ${{secrets.GCLOUD_CLUSTER_NAME}}
+          location: ${{secrets.GCLOUD_CLUSTER_ZONE}}
+
+      - name: Install helm
+        uses: Azure/setup-helm@v3
+        with: 
+          version: latest
+          token: ${{ secrets.TOKEN_GITHUB }}
+
+      - name: Deploy
+        run: |
+          helm repo add welcome-client https://lucassandin.github.io/welcome-client.github.io/charts
+          helm repo update 
+          helm upgrade welcome-client welcome-client/welcome-client
