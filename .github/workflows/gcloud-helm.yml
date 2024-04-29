@@ -20,6 +20,17 @@ jobs:
         run: |
           git config user.name "$GITHUB_ACTOR"
           git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+      
+      - name: Install helm
+        uses: Azure/setup-helm@v3
+        with: 
+          version: latest
+          token: ${{ secrets.TOKEN_GITHUB }}
+      
+      - name: Deploy
+        run: |
+          helm package charts/ --version="v${{github.run_number}}"
+          mv welcome-client-v${{github.run_number}}.tgz ./charts/
 
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.6.0
