@@ -27,7 +27,7 @@ jobs:
           version: latest
           token: ${{ secrets.TOKEN_GITHUB }}
       
-      - name: Deploy
+      - name: Create package helm
         run: |
           helm package charts/ --version="v${{github.run_number}}"
           mv welcome-client-v${{github.run_number}}.tgz ./charts/
