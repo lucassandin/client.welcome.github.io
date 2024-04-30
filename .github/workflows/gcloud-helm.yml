@@ -31,7 +31,7 @@ jobs:
         run: |
           helm package ./charts/ --version="v${{github.run_number}}"
           mv welcome-client-v${{github.run_number}}.tgz ./charts/
-          helm repo index ./charts/ --url https://lucassandin.github.io/welcome-client.github.io/charts/welcome-client-v${{github.run_number}}.tgz
+          helm repo index ./charts/ --url https://lucassandin.github.io/client.welcome.github.io/charts/welcome-client-v${{github.run_number}}.tgz
 
       - name: Git Commit and Push
         uses: github-actions-x/commit@v2.9
