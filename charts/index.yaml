@@ -3,12 +3,12 @@ entries:
   welcome-client:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2024-04-29T21:02:29.022881-03:00"
+    created: "2024-04-30T01:03:49.938706665Z"
     description: A Helm chart for Kubernetes
-    digest: 18d04c37f0cc0d1e98049cd1639541556a0b72a8e8e21ac73595b5785c92c016
+    digest: c00ab057a31afdde82a67507e2f9a3032e98f15a2c8d9070ff581578030a42a0
     name: welcome-client
     type: application
     urls:
-    - https://lucassandin.github.io/welcome-client.github.io/charts/welcome-client-v1.0.7.tgz/welcome-client-v1.0.7.tgz
-    version: v1.0.7
-generated: "2024-04-29T21:02:29.0148824-03:00"
+    - https://lucassandin.github.io/welcome-client.github.io/charts/welcome-client-v14.tgz/welcome-client-v14.tgz
+    version: v14
+generated: "2024-04-30T01:03:49.938312329Z"
