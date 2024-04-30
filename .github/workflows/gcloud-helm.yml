@@ -39,6 +39,7 @@ jobs:
           github-token: ${{ secrets.TOKEN_GITHUB }}
           force-add: true
           commit-message: "Update chart version"
+          push-branch: 'main'
 
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.6.0
