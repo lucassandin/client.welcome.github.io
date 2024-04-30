@@ -54,6 +54,27 @@ The application displays a random welcome message each time it is loaded. Simply
 - Framework: ReactJS with Next.js
 - Programming Language: JavaScript (ES6+)
 
+## Helm usage
+
+[Helm](https://helm.sh) must be installed to use the charts. Please refer to
+Helm's [documentation](https://helm.sh/docs) to get started.
+
+Once Helm has been set up correctly, add the repo as follows:
+
+helm repo add welcome-client https://lucassandin.github.io/client.welcome.github.io/charts
+
+If you had already added this repo earlier, run `helm repo update` to retrieve
+the latest versions of the packages. You can then run `helm search repo
+welcome-client` to see the charts.
+
+To install the welcome-client chart:
+
+    helm install welcome-client welcome-client/welcome-client
+
+To uninstall the chart:
+
+    helm delete welcome-client
+
 ## Contribution
 
 Contributions are welcome! Feel free to open an issue or submit a pull request.
