@@ -105,6 +105,7 @@ jobs:
 
       - name: Deploy
         run: |
-          helm repo add welcome-client https://lucassandin.github.io/welcome-client.github.io/charts
+          helm repo remove welcome-client
+          helm repo add welcome-client https://lucassandin.github.io/client.welcome.github.io/charts
           helm repo update 
           helm upgrade --install welcome-client welcome-client/welcome-client
