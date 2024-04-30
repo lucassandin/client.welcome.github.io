@@ -2,7 +2,7 @@ application:
   name: welcome-client
   namespace: frontend
   app: welcome-client
-  version: "v1.0.10"
+  version: "v1.0.15"
   configMap:
     data:
       HOSTNAME: "0.0.0.0"
