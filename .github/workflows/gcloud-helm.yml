@@ -33,9 +33,10 @@ jobs:
           mv welcome-client-v${{github.run_number}}.tgz ./charts/
           helm repo index ./charts/ --url https://lucassandin.github.io/welcome-client.github.io/charts/welcome-client-v${{github.run_number}}.tgz
 
-      - name: Git commit
+      - name: git Actions
         uses: srt32/git-actions@v0.0.3
-        run: |
+
+      - run: |
           git add .
           git commit -m "Update chart version"
           git push origin main
