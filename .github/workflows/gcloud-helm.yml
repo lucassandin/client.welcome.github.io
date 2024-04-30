@@ -33,14 +33,6 @@ jobs:
           mv welcome-client-v${{github.run_number}}.tgz ./charts/
           helm repo index ./charts/ --url https://lucassandin.github.io/client.welcome.github.io/charts/welcome-client-v${{github.run_number}}.tgz
 
-      - name: Git Commit and Push
-        uses: github-actions-x/commit@v2.9
-        with: 
-          github-token: ${{ secrets.TOKEN_GITHUB }}
-          force-add: true
-          commit-message: "Update chart version"
-          push-branch: 'main'
-
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.6.0
         with:
@@ -48,7 +40,14 @@ jobs:
           config: ./charts
         env:
           CR_TOKEN: "${{ secrets.TOKEN_GITHUB }}"
-          
+
+      - name: Git Commit and Push
+        uses: github-actions-x/commit@v2.9
+        with: 
+          github-token: ${{ secrets.TOKEN_GITHUB }}
+          force-add: true
+          commit-message: "Update chart version"
+          push-branch: 'main'
 
   CI:
     runs-on: ubuntu-latest
