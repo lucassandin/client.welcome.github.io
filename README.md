@@ -1,65 +1,20 @@
-# Welcome React App
+## Usage
 
-Bem-vindo ao Welcome React App! Este é um projeto simples desenvolvido com ReactJS utilizando Next.js. A aplicação exibe mensagens de boas-vindas aleatórias em cada carregamento da tela. Ela é executada na porta 3000 e pode ser executada localmente usando o script "dev" do package.json. Em produção, utilize o script "start".
+[Helm](https://helm.sh) must be installed to use the charts. Please refer to
+Helm's [documentation](https://helm.sh/docs) to get started.
 
-## Como Executar Localmente
+Once Helm has been set up correctly, add the repo as follows:
 
-Para executar localmente, siga os passos abaixo:
+helm repo add welcome-client https://welcome-client.github.io/charts
 
-1. Certifique-se de ter o Node.js instalado em sua máquina.
-2. Clone o repositório:
+If you had already added this repo earlier, run `helm repo update` to retrieve
+the latest versions of the packages. You can then run `helm search repo
+welcome-client` to see the charts.
 
-```bash
-git clone https://github.com/seu-usuario/welcome-react-app.git
-```
+To install the welcome-client chart:
 
-3. Acesse o diretório do projeto:
+    helm install welcome-client welcome-client/welcome-client
 
-```bash
-cd welcome-react-app
-```
+To uninstall the chart:
 
-4. Instale as dependências:
-
-```bash
-npm install
-```
-
-ou
-
-```bash
-yarn
-```
-
-5. Execute o projeto em modo de desenvolvimento:
-
-```bash
-npm run dev
-```
-
-ou
-
-```bash
-yarn dev
-```
-
-6. Abra o navegador e acesse [http://localhost:3000](http://localhost:3000) para ver a aplicação em execução.
-
-## Como Usar
-
-A aplicação exibe uma mensagem de boas-vindas aleatória a cada vez que é carregada. Basta acessar [http://localhost:3000](http://localhost:3000) no navegador para visualizar as mensagens.
-
-## Tecnologias Utilizadas
-
-- Framework: ReactJS com Next.js
-- Linguagem de Programação: JavaScript (ES6+)
-
-## Contribuição
-
-Contribuições são bem-vindas! Sinta-se à vontade para abrir uma issue ou enviar um pull request.
-
-## Licença
-
-Este projeto está licenciado sob a MIT License.
-
-Se tiver alguma dúvida ou sugestão, sinta-se à vontade para entrar em contato! 😊
+    helm delete welcome-client
