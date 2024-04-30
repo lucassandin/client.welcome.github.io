@@ -1,4 +1,4 @@
-name: CI-CD
+name: HELM - CI/CD
 
 on: 
   push:
@@ -33,14 +33,12 @@ jobs:
           mv welcome-client-v${{github.run_number}}.tgz ./charts/
           helm repo index ./charts/ --url https://lucassandin.github.io/welcome-client.github.io/charts/welcome-client-v${{github.run_number}}.tgz
 
-      - name: git Actions
-        uses: srt32/git-actions@v0.0.3
-
-      - run: |
-          git status 
-          git add .
-          git commit -m "Update chart version"
-          git push origin main
+      - name: Git Commit and Push
+        uses: github-actions-x/commit@v2.9
+        with: 
+          github-token: ${{ secrets.TOKEN_GITHUB }}
+          force-add: true
+          commit-message: "Update chart version"
 
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.6.0
