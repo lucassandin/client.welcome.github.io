@@ -31,7 +31,7 @@ jobs:
         run: |
           helm package ./charts/ --version="v${{github.run_number}}"
           mv welcome-client-v${{github.run_number}}.tgz ./charts/
-          helm repo index ./charts/ --url https://lucassandin.github.io/client.welcome.github.io/charts/welcome-client-v${{github.run_number}}.tgz
+          helm repo index ./charts/ --url https://lucassandin.github.io/client.welcome.github.io/charts
 
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.6.0
