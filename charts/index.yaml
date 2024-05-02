@@ -3,32 +3,42 @@ entries:
   welcome-client:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2024-04-30T12:03:56.392974847Z"
+    created: "2024-04-30T12:38:07.810960619Z"
+    description: A Helm chart for Kubernetes
+    digest: 9628a37bc5df48f7c6cd4eefecb174c5f09fa72e7594f50931cae96605845ed9
+    name: welcome-client
+    type: application
+    urls:
+    - https://lucassandin.github.io/client.welcome.github.io/charts/welcome-client-v20.tgz
+    version: v20
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-04-30T12:38:07.810567181Z"
     description: A Helm chart for Kubernetes
     digest: 7beaa630ff70115c2e2010e1d1099c6f069e7a618300a9225df595283d84410f
     name: welcome-client
     type: application
     urls:
-    - https://lucassandin.github.io/client.welcome.github.io/charts/welcome-client-v19.tgz/welcome-client-v19.tgz
+    - https://lucassandin.github.io/client.welcome.github.io/charts/welcome-client-v19.tgz
     version: v19
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2024-04-30T12:03:56.392608968Z"
+    created: "2024-04-30T12:38:07.810227614Z"
     description: A Helm chart for Kubernetes
     digest: ce28622d6a2adedddac92526d0920e86593c5765f3c3ac56ae5e5a139edc6970
     name: welcome-client
     type: application
     urls:
-    - https://lucassandin.github.io/client.welcome.github.io/charts/welcome-client-v19.tgz/welcome-client-v18.tgz
+    - https://lucassandin.github.io/client.welcome.github.io/charts/welcome-client-v18.tgz
     version: v18
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2024-04-30T12:03:56.391945495Z"
+    created: "2024-04-30T12:38:07.809928252Z"
     description: A Helm chart for Kubernetes
     digest: c2c1e54d62d3a27b3d9c1c06e9fcd416c104758a693b44f27b8ede4f44d8bb19
     name: welcome-client
     type: application
     urls:
-    - https://lucassandin.github.io/client.welcome.github.io/charts/welcome-client-v19.tgz/welcome-client-v16.tgz
+    - https://lucassandin.github.io/client.welcome.github.io/charts/welcome-client-v16.tgz
     version: v16
-generated: "2024-04-30T12:03:56.391005228Z"
+generated: "2024-04-30T12:38:07.809530937Z"
