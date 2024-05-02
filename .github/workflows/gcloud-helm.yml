@@ -33,14 +33,6 @@ jobs:
           mv welcome-client-v${{github.run_number}}.tgz ./charts/
           helm repo index ./charts/ --url https://lucassandin.github.io/client.welcome.github.io/charts
 
-      - name: Run chart-releaser
-        uses: helm/chart-releaser-action@v1.6.0
-        with:
-          charts_dir: ./charts
-          config: ./charts
-        env:
-          CR_TOKEN: "${{ secrets.TOKEN_GITHUB }}"
-
       - name: Git Commit and Push
         uses: github-actions-x/commit@v2.9
         with: 
@@ -107,3 +99,4 @@ jobs:
           helm repo add welcome-client https://lucassandin.github.io/client.welcome.github.io/charts
           helm repo update 
           helm upgrade --install welcome-client welcome-client/welcome-client
+          
