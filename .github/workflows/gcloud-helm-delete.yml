@@ -1,4 +1,4 @@
-name: HELM - CI/CD
+name: HELM - DELETE
 
 on: 
   push:
