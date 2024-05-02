@@ -1,0 +1,42 @@
+name: HELM - CI/CD
+
+on: 
+  push:
+    tags: 
+      - 'helm-delete*'
+
+jobs:
+  DELETE:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.1.4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.TOKEN_GITHUB }}
+
+      - name: Authenticate to GCP
+        uses: google-github-actions/auth@v1
+        with:
+          credentials_json: ${{ secrets.GCLOUD_GKE_SA_KEY }}
+          project_id: ${{ secrets.GCLOUD_PROJECT_ID }}
+
+      - name: Setup GKE GCloud auth plugin
+        uses: simenandre/setup-gke-gcloud-auth-plugin@v1
+
+      - name: Google github actions/get credentials
+        uses: google-github-actions/get-gke-credentials@v1
+        with:
+          cluster_name: ${{secrets.GCLOUD_CLUSTER_NAME}}
+          location: ${{secrets.GCLOUD_CLUSTER_ZONE}}
+
+      - name: Install helm
+        uses: Azure/setup-helm@v3
+        with: 
+          version: latest
+          token: ${{ secrets.TOKEN_GITHUB }}
+
+      - name: Deploy
+        run: |
+          helm uninstall welcome-client
