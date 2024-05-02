@@ -3,7 +3,7 @@ name: HELM - DELETE
 on: 
   push:
     tags: 
-      - 'helm-delete*'
+      - 'delete-helm-*'
 
 jobs:
   DELETE:
